@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         mAdapter = new SimpleAdapter(this, mDatas);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
         //设置recycleView的布局管理
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayout.VERTICAL, false);
@@ -74,12 +76,24 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
+            case R.id.add:
+
+                mAdapter.addData(1);
+
+                break;
+
+            case R.id.delete:
+
+                mAdapter.deleteData(1);
+
+                break;
+
             case R.id.Listview:
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
                 break;
 
             case R.id.Gridview:
-                mRecyclerView.setLayoutManager(new GridLayoutManager(this,3));
+                mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
                 break;
 
             case R.id.action_hor_gridview:

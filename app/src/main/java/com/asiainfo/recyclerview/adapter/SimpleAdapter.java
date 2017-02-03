@@ -49,6 +49,19 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
 
     }
 
+    public void addData(int position) {
+
+        mDatas.add(position, "insert One");
+        notifyItemInserted(position);
+    }
+
+    public void deleteData(int position) {
+
+        mDatas.remove(position);
+        notifyItemRemoved(position);
+
+    }
+
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView ItemRecycle;
