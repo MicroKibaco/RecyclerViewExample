@@ -21,6 +21,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
     private LayoutInflater mInflater;
     private OnItemClickListener mListener;
 
+
     public SimpleAdapter(Context context, List<String> listStr) {
         this.mContext = context;
         this.mDatas = listStr;
@@ -48,7 +49,10 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mListener.onItemClick(holder.itemView, position);
+
+                    int mLayoutPosition = holder.getLayoutPosition();
+
+                    mListener.onItemClick(holder.itemView, mLayoutPosition);
 
 
                 }
@@ -56,7 +60,9 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    mListener.onItemLongClick(holder.itemView, position);
+                    int mLayoutPosition = holder.getLayoutPosition();
+
+                    mListener.onItemLongClick(holder.itemView, mLayoutPosition);
                     return true;
                 }
             });
