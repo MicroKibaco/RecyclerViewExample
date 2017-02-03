@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context="com.asiainfo.recyclerview.activity.RecyclerViewActivity">
+      tools:context="com.asiainfo.recyclerview.activity.RecyclerViewActivity"
+        >
     <item
-            android:orderInCategory="1"
-            android:showAsAction="never"
             android:id="@+id/Listview"
+            android:orderInCategory="100"
+            android:showAsAction="always"
             android:title="Listview"/>
     <item
-            android:orderInCategory="2"
-            android:showAsAction="never"
             android:id="@+id/Gridview"
+            android:orderInCategory="100"
+            android:showAsAction="always"
             android:title="Gridview"/>
     <item
-            android:orderInCategory="3"
-            android:showAsAction="never"
             android:id="@+id/action_hor_gridview"
+            android:orderInCategory="100"
+            android:showAsAction="always"
             android:title="horizationalGridView"/>
     <item
-            android:orderInCategory="4"
-            android:showAsAction="never"
             android:id="@+id/staggerGridview"
+            android:orderInCategory="100"
+            android:showAsAction="always"
             android:title="staggerGridview"/>
+
 </menu>

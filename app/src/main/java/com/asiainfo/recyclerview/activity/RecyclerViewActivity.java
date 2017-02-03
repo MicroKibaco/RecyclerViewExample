@@ -1,8 +1,8 @@
 package com.asiainfo.recyclerview.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,7 +17,7 @@ import com.asiainfo.recyclerview.adapter.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewActivity extends Activity {
+public class RecyclerViewActivity extends AppCompatActivity {
 
     private SimpleAdapter mAdapter;
     private Context mContext;
@@ -63,15 +63,15 @@ public class RecyclerViewActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        switch (id) {
+        switch (item.getItemId()) {
 
             case R.id.Listview:
                 mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -82,12 +82,12 @@ public class RecyclerViewActivity extends Activity {
                 break;
 
             case R.id.action_hor_gridview:
-                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(6,StaggeredGridLayoutManager.HORIZONTAL));
 
                 break;
 
             case R.id.staggerGridview:
-                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL));
+                // mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL));
+                mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(6, StaggeredGridLayoutManager.HORIZONTAL));
 
                 break;
 
