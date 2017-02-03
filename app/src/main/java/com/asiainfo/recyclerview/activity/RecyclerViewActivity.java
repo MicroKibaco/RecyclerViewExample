@@ -68,6 +68,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu, menu);
+        menu.findItem(menu.getItem(0).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menu.findItem(menu.getItem(1).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        menu.findItem(menu.getItem(2).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.findItem(menu.getItem(3).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.findItem(menu.getItem(4).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        menu.findItem(menu.getItem(5).getItemId()).setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         return true;
     }
 
