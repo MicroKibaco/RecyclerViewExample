@@ -11,7 +11,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.asiainfo.recyclerview.R;
 import com.asiainfo.recyclerview.adapter.SimpleAdapter;
@@ -19,7 +21,7 @@ import com.asiainfo.recyclerview.adapter.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewActivity extends AppCompatActivity {
+public class RecyclerViewActivity extends AppCompatActivity implements SimpleAdapter.OnItemClickListener {
 
     private SimpleAdapter mAdapter;
     private Context mContext;
@@ -32,20 +34,17 @@ public class RecyclerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler_view);
 
         initView();
+        initListener();
         initDatas();
     }
 
+
     private void initDatas() {
 
-        mDatas = new ArrayList<>();
 
-        for (int i = 'A'; i <= 'Z'; i++) {
-            mDatas.add("" + (char) i);
-        }
-
-        mAdapter = new SimpleAdapter(this, mDatas);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
 
         //设置recycleView的布局管理
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayout.VERTICAL, false);
@@ -61,6 +60,16 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private void initView() {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recycleview);
+        mDatas = new ArrayList<>();
+
+        for (int i = 'A'; i <= 'Z'; i++) {
+            mDatas.add("" + (char) i);
+        }
+    }
+
+    private void initListener() {
+        mAdapter = new SimpleAdapter(this, mDatas);
+        mAdapter.setOnItemClickListener(this);
 
     }
 
@@ -119,5 +128,15 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    @Override
+    public void onItemClick(View view, int postion) {
+        Toast.makeText(this, "Click" + postion, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onItemLongClick(View view, int postion) {
+        Toast.makeText(this, "LongClick" + postion, Toast.LENGTH_SHORT).show();
     }
 }

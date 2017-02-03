@@ -19,11 +19,16 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
     private Context mContext;
     private List<String> mDatas;
     private LayoutInflater mInflater;
+    private OnItemClickListener mListener;
 
     public SimpleAdapter(Context context, List<String> listStr) {
         this.mContext = context;
         this.mDatas = listStr;
         this.mInflater = LayoutInflater.from(context);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener;
     }
 
     @Override
@@ -36,9 +41,28 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(SimpleAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final SimpleAdapter.MyViewHolder holder, final int position) {
 
         holder.ItemRecycle.setText(mDatas.get(position));
+        if (mListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onItemClick(holder.itemView, position);
+
+
+                }
+            });
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mListener.onItemLongClick(holder.itemView, position);
+                    return true;
+                }
+            });
+
+
+        }
 
     }
 
@@ -60,6 +84,13 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
         mDatas.remove(position);
         notifyItemRemoved(position);
 
+    }
+
+    public interface OnItemClickListener {
+
+        void onItemClick(View view, int postion);
+
+        void onItemLongClick(View view, int postion);
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {

@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="77dp"
         android:layout_margin="3dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/item_bg"
         tools:context="com.asiainfo.recyclerview.activity.RecyclerViewActivity">
 
     <TextView
