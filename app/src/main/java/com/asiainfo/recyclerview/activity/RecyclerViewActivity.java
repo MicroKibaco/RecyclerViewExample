@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
@@ -46,7 +47,7 @@ public class RecyclerViewActivity extends Activity {
         //设置recycleView的布局管理
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayout.VERTICAL, false);
 
-        //设置recycleView的分隔线
+        //设置recycleView的分隔线,开发过程中一般会选择自定义divier
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 
         mRecyclerView.setLayoutManager(manager);
@@ -58,6 +59,12 @@ public class RecyclerViewActivity extends Activity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.id_recycleview);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 
     @Override
@@ -88,6 +95,6 @@ public class RecyclerViewActivity extends Activity {
                 break;
 
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 }
