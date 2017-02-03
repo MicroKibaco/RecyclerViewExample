@@ -23,9 +23,9 @@ import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity implements SimpleAdapter.OnItemClickListener {
 
+    List<String> mDatas;
     private SimpleAdapter mAdapter;
     private Context mContext;
-    private List<String> mDatas;
     private RecyclerView mRecyclerView;
 
     @Override

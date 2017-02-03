@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.asiainfo.recyclerview.R;
+import com.asiainfo.recyclerview.adapter.SimpleAdapter;
 import com.asiainfo.recyclerview.adapter.StaggeredAdapter;
 
 import java.util.ArrayList;
@@ -39,6 +41,16 @@ public class StaggeredGridLayoutActivity extends AppCompatActivity {
         }
 
         mAdapter = new StaggeredAdapter(this, mDatas);
+        mAdapter.setOnItemClickListener(new SimpleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int postion) {
+            }
+
+            @Override
+            public void onItemLongClick(View view, int postion) {
+                mAdapter.deleteData(postion);
+            }
+        });
         mRecyclerView.setAdapter(mAdapter);
 
         //设置recycleView的布局管理

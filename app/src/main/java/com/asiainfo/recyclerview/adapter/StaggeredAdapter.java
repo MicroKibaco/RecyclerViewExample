@@ -1,13 +1,8 @@
 package com.asiainfo.recyclerview.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.asiainfo.recyclerview.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +10,7 @@ import java.util.List;
 /**
  * 作者:小木箱 邮箱:yangzy3@asiainfo.com 创建时间:2017年02月03日10点59分 描述:
  */
-public class StaggeredAdapter extends RecyclerView.Adapter<StaggeredAdapter.MyViewHolder> {
+public class StaggeredAdapter extends SimpleAdapter {
 
     private Context mContext;
     private List<String> mDatas;
@@ -23,6 +18,7 @@ public class StaggeredAdapter extends RecyclerView.Adapter<StaggeredAdapter.MyVi
     private LayoutInflater mInflater;
 
     public StaggeredAdapter(Context context, List<String> listStr) {
+        super(context, listStr);
         this.mContext = context;
         this.mDatas = listStr;
         this.mInflater = LayoutInflater.from(context);
@@ -32,14 +28,7 @@ public class StaggeredAdapter extends RecyclerView.Adapter<StaggeredAdapter.MyVi
         }
     }
 
-    @Override
-    public StaggeredAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = mInflater.inflate(R.layout.item_recyleview, parent, false);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
-
-    }
 
     @Override
     public void onBindViewHolder(StaggeredAdapter.MyViewHolder holder, int position) {
@@ -48,26 +37,10 @@ public class StaggeredAdapter extends RecyclerView.Adapter<StaggeredAdapter.MyVi
         lp.height = mHights.get(position);
         holder.itemView.setLayoutParams(lp);
         holder.ItemRecycle.setText(mDatas.get(position));
+        setUpItemEvent(holder);
 
     }
 
-    @Override
-    public int getItemCount() {
-
-        return mDatas.size();
-
-    }
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
-
-        TextView ItemRecycle;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            ItemRecycle = (TextView) itemView.findViewById(R.id.id_recycle_item);
-        }
-
-    }
 
 }
 

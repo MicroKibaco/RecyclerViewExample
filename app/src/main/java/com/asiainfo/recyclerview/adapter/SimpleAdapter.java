@@ -45,6 +45,11 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
     public void onBindViewHolder(final SimpleAdapter.MyViewHolder holder, final int position) {
 
         holder.ItemRecycle.setText(mDatas.get(position));
+        setUpItemEvent(holder);
+
+    }
+
+    protected void setUpItemEvent(final MyViewHolder holder) {
         if (mListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,10 +71,7 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleAdapter.MyViewHold
                     return true;
                 }
             });
-
-
         }
-
     }
 
     @Override
